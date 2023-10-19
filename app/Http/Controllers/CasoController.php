@@ -36,7 +36,12 @@ class CasoController extends Controller
         $datos = [];
         foreach ($casos as $caso) {
             $tipoServicio = TipoServicio::find($caso->service_id);
-            $caso->area_id = $tipoServicio->area->id;
+            if ($tipoServicio) {
+                $caso->area_id = $tipoServicio->area->id;
+            } else {
+                $caso->area_id = 1;
+            }
+
             if ($caso->status_id == null) {
                 $caso->status_id = 1;
             }
