@@ -378,7 +378,7 @@ class CasoController extends Controller
         $adjuntos = ArchivoCaso::where('case_id', $request->caso_id)->get();
         $urls = [];
         foreach ($adjuntos as $adjunto) {
-            $urls[] = '/storage/case_files/' . $adjunto->name;
+            $urls[] = './storage/case_files/' . $adjunto->name;
         }
         return $urls;
     }
