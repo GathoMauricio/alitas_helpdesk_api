@@ -3,18 +3,18 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
-Route::get('/', function () {
-    if (Auth::check()) {
-        return App\Http\Controllers\HomeController::index();
-    }
-    return view('auth.login');
-});
-Route::any('/', function () {
-    if (Auth::check()) {
-        return App\Http\Controllers\HomeController::index();
-    }
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     if (Auth::check()) {
+//         return App\Http\Controllers\HomeController::index();
+//     }
+//     return view('auth.login');
+// });
+// Route::any('/', function () {
+//     if (Auth::check()) {
+//         return App\Http\Controllers\HomeController::index();
+//     }
+//     return view('auth.login');
+// })->name('/');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('generar_password/{token}', [\App\Http\Controllers\UserController::class, 'generarPassword']);
@@ -30,3 +30,13 @@ Route::get('cargar_adjuntos', [App\Http\Controllers\CasoController::class, 'carg
 Route::post('store_adjunto', [App\Http\Controllers\CasoController::class, 'storeAdjunto']);
 
 Route::get('api-obtener-tipos-servicio', [\App\Http\Controllers\TipoServicioController::class, 'apiObtenerTiposServicio']);
+
+
+Route::any('/', function () {
+})->name('/');
+Route::get('/', function () {
+    if (Auth::check()) {
+        return App\Http\Controllers\HomeController::index();
+    }
+    return view('auth.login');
+})->name('/');
