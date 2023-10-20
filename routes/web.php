@@ -9,6 +9,12 @@ Route::any('/', function () {
     }
     return view('auth.login');
 });
+Route::get('/', function () {
+    if (Auth::check()) {
+        return App\Http\Controllers\HomeController::index();
+    }
+    return view('auth.login');
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('generar_password/{token}', [\App\Http\Controllers\UserController::class, 'generarPassword']);
 Route::get('show_caso/{}', [App\Http\Controllers\CasoController::class, 'show']);
