@@ -7,6 +7,8 @@
                 <div class="card">
                     <div class="card-header">
                         <b>Mis casos</b>
+                        <br>
+                        <a href="{{ url('api/api-descargar-android-app') }}" target="_BLANK">Descargar APK</a>
                         <a href="{{ url('create_caso') }}" class="btn btn-primary" style="float: right;">Iniciar caso</a>
                     </div>
                     <div class="card-body">
