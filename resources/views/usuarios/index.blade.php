@@ -34,8 +34,10 @@
                                         <td>{{ $usuario->phone }}</td>
                                         <td>{{ $usuario->address }}</td>
                                         <td>
-                                            <a href="{{ url('edit_usuarios', $usuario->id) }}"
-                                                class="text-warning">Editar</a>
+                                            <a href="{{ url('edit_usuarios', $usuario->id) }}" class="text-info">Editar</a>
+                                            <br>
+                                            <a href="{{ url('edit_password_usuarios', $usuario->id) }}"
+                                                class="text-warning">Password</a>
                                             <br>
                                             <a href="javascript:void(0)" onclick="eliminarUsuario({{ $usuario->id }})"
                                                 class="text-danger">Eliminar</a>

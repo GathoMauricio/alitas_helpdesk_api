@@ -38,6 +38,9 @@ Route::get('edit_usuarios/{id}', [App\Http\Controllers\UserController::class, 'e
 Route::put('update_usuarios/{id}', [App\Http\Controllers\UserController::class, 'update'])->middleware(App\Http\Middleware\IsAdminMiddleware::class);
 Route::delete('delete_usuarios', [App\Http\Controllers\UserController::class, 'delete'])->middleware(App\Http\Middleware\IsAdminMiddleware::class);
 
+Route::get('edit_password_usuarios/{id}', [App\Http\Controllers\UserController::class, 'editPassword'])->middleware(App\Http\Middleware\IsAdminMiddleware::class);
+Route::put('update_password_usuarios/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->middleware(App\Http\Middleware\IsAdminMiddleware::class);
+
 Route::any('/', function () {
 })->name('/');
 Route::get('/', function () {

@@ -221,6 +221,29 @@ class UserController extends Controller
         }
     }
 
+    public function editPassword($id)
+    {
+        $usuario = User::findOrFail($id);
+        return view('usuarios.edit_password', compact('usuario'));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required',
+        ], [
+            'password.required' => 'Campo obligatorio',
+            'password.confirmed' => 'La confirmación no coincide',
+            'password.min' => 'El password debe ser de 6 caracteres como mínimo',
+            'password_confirmation.required' => 'Campo obligatorio',
+        ]);
+        $usuario = User::findOrFail($id);
+        $usuario->password = bcrypt($request->password);
+        if ($usuario->save())
+            return redirect()->route('index_usuarios')->with('message', 'El password del usuario ' . $usuario->email . ' se actualizó con éxito.');
+    }
+
     public function delete(Request $request)
     {
         $usuario = User::findOrFail($request->usuario_id);
