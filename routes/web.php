@@ -36,7 +36,7 @@ Route::any('/', function () {
 })->name('/');
 Route::get('/', function () {
     if (Auth::check()) {
-        return App\Http\Controllers\HomeController::index();
+        return redirect('home');
     }
     return view('auth.login');
 })->name('/');
