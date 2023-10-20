@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
-Route::get('/', function () {
+Route::any('/', function () {
     if (Auth::check()) {
         return App\Http\Controllers\HomeController::index();
     }
