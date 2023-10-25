@@ -4,9 +4,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Adjuntos</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:rgb(234,81,70);font-weight:bold;">
+                    Adjuntos</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color: rgb(43,51,60)">
                 <div class="container">
                     <div class="row" id="modal_body_adjuntos">
                         <div class="col-md-4 p-1">
@@ -21,7 +22,8 @@
                     <input type="file" id="file_nuevo_adjunto" class="form-control"
                         accept="image/jpg, image/jpeg, image/png">
                     <br>
-                    <button class="btn btn-primary" style="width: 100%;">Guardar</button>
+                    <button class="btn btn-primary"
+                        style="float:right; background-color: rgb(234,81,70);">Guardar</button>
                 </form>
             </div>
         </div>

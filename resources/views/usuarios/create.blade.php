@@ -6,15 +6,15 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <b>Crear usuario</b>
+                        <b style="color:rgb(234,81,70);">Crear usuario</b>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: rgb(43,51,60);">
                         <form action="{{ url('store_usuarios') }}" method="POST" class="form">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="user_rol_id" style="font-weight:bold;">Rol</label>
+                                        <label for="user_rol_id" style="font-weight:bold;color:rgb(251,199,0)">Rol</label>
                                         <select name="user_rol_id" id="user_rol_id" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                             @foreach ($roles as $rol)
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="status" style="font-weight:bold;">Estatus</label>
+                                        <label for="status" style="font-weight:bold;color:rgb(251,199,0)">Estatus</label>
                                         <select name="status" id="status" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                             <option value="Activo">Activo</option>
@@ -49,7 +49,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="name" style="font-weight:bold;">Nombre</label>
+                                            <label for="name"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Nombre</label>
                                             <input type="text" name="name" class="form-control">
                                             @error('name')
                                                 <span style="color:red">{{ $message }}</span>
@@ -60,7 +61,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="middle_name" style="font-weight:bold;">A. patermo</label>
+                                            <label for="middle_name" style="font-weight:bold;color:rgb(251,199,0)">A.
+                                                patermo</label>
                                             <input type="text" name="middle_name" class="form-control">
                                             @error('middle_name')
                                                 <span style="color:red">{{ $message }}</span>
@@ -69,7 +71,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="last_name" style="font-weight:bold;">A. materno</label>
+                                            <label for="last_name" style="font-weight:bold;color:rgb(251,199,0)">A.
+                                                materno</label>
                                             <input type="text" name="last_name" class="form-control">
                                             @error('last_name')
                                                 <span style="color:red">{{ $message }}</span>
@@ -80,7 +83,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="email" style="font-weight:bold;">Email</label>
+                                            <label for="email"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Email</label>
                                             <input type="email" name="email" class="form-control">
                                             @error('email')
                                                 <span style="color:red">{{ $message }}</span>
@@ -89,7 +93,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="phone" style="font-weight:bold;">Teléfono</label>
+                                            <label for="phone"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Teléfono</label>
                                             <input type="text" name="phone" class="form-control">
                                             @error('phone')
                                                 <span style="color:red">{{ $message }}</span>
@@ -100,7 +105,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="address" style="font-weight:bold;">Dirección</label>
+                                            <label for="address"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Dirección</label>
                                             <textarea name="address" class="form-control"></textarea>
                                             @error('address')
                                                 <span style="color:red">{{ $message }}</span>
@@ -111,7 +117,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="password" style="font-weight:bold;">Password</label>
+                                            <label for="password"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Password</label>
                                             <input type="password" name="password" class="form-control">
                                             @error('password')
                                                 <span style="color:red">{{ $message }}</span>
@@ -120,7 +127,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="password_confirmation" style="font-weight:bold;">Confirmar
+                                            <label for="password_confirmation"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Confirmar
                                                 password</label>
                                             <input type="password" name="password_confirmation" class="form-control">
                                             @error('password_confirmation')
@@ -132,7 +140,7 @@
                                 <div class="row">
                                     <div class="col-md-12 p-3">
                                         <button type="submit" class="btn btn-primary"
-                                            style="width: 100%;">Guardar</button>
+                                            style="float:right; background-color: rgb(234,81,70);">Guardar</button>
                                     </div>
                                 </div>
                             </div>

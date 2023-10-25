@@ -6,16 +6,16 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <b>Editar caso {{ $caso->num_case }}</b>
+                        <b style="color:rgb(234,81,70);">Editar caso {{ $caso->num_case }}</b>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: rgb(43,51,60);">
                         <form action="{{ url('update_caso', $caso->id) }}" method="POST" class="form">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="area_id" style="font-weight:bold;">Area</label>
+                                        <label for="area_id" style="font-weight:bold;color:rgb(251,199,0)">Area</label>
                                         <select onchange="selectArea(this.value)" name="area_id" id="area_id"
                                             class="form-select">
                                             <option value>--Seleccione una opción--</option>
@@ -35,7 +35,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="service_id" style="font-weight:bold;">Tipo de servicio</label>
+                                        <label for="service_id" style="font-weight:bold;color:rgb(251,199,0)">Tipo de
+                                            servicio</label>
                                         <select name="service_id" id="service_id" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                         </select>
@@ -46,7 +47,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="priority_case_id" style="font-weight:bold;">Prioridad</label>
+                                        <label for="priority_case_id"
+                                            style="font-weight:bold;color:rgb(251,199,0)">Prioridad</label>
                                         <select name="priority_case_id" id="priority_case_id" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                             @foreach ($prioridades as $prioridad)
@@ -65,7 +67,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="status_id" style="font-weight:bold;">Estats</label>
+                                        <label for="status_id" style="font-weight:bold;color:rgb(251,199,0)">Estats</label>
                                         <select name="status_id" id="status_id" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                             @foreach ($estatuses as $estatus)
@@ -84,7 +86,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="description" style="font-weight:bold;">Descripción</label>
+                                        <label for="description"
+                                            style="font-weight:bold;color:rgb(251,199,0)">Descripción</label>
                                         <textarea name="description" id="description" class="form-control">{{ old('description', $caso->description) }}</textarea>
                                         @error('description')
                                             <span style="color:red">{{ $message }}</span>
@@ -92,7 +95,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 p-3">
-                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Actualizar</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        style="float:right; background-color: rgb(234,81,70);">Actualizar</button>
                                 </div>
                             </div>
                         </form>

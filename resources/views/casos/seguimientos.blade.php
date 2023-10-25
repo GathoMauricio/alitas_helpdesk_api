@@ -4,9 +4,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Segimientos</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:rgb(234,81,70);font-weight:bold;">
+                    Seguimientos</h5>
             </div>
-            <div class="modal-body" id="modal_body_seguimientos">
+            <div class="modal-body" id="modal_body_seguimientos" style="background-color: rgb(43,51,60)">
                 <div class="card">
                     ...
                 </div>

@@ -6,11 +6,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <b>Usuarios</b>
+                        <b style="color:rgb(234,81,70);">Usuarios</b>
                         <a href="{{ url('create_usuarios') }}" class="btn btn-primary" style="float: right;">Agregar
                             usuario</a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: rgb(43,51,60);">
                         {{ $usuarios->links('pagination::bootstrap-4') }}
                         <table class="table table-stripped">
                             <thead>

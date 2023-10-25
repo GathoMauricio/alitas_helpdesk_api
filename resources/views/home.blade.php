@@ -6,13 +6,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <b>Mis casos</b>
+                        <b style="color:rgb(234,81,70);">Mis casos</b>
                         <br>
                         <a href="{{ url('api/api-descargar-android-app') }}" target="_BLANK">Descargar APK</a>
                         <a href="{{ url('create_caso') }}" class="btn btn-primary" style="float: right;">Iniciar caso</a>
                     </div>
-                    <div class="card-body">
-                        {{ $casos->links('pagination::bootstrap-4') }}
+                    <div class="card-body" style="background-color: rgb(43,51,60)">
+                        <div style="float: right;">
+                            {{ $casos->links('pagination::bootstrap-4') }}
+                        </div>
                         <table class="table table-stripped">
                             <thead>
                                 <tr>
@@ -55,7 +57,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $casos->links('pagination::bootstrap-4') }}
+                        <div style="float: right;">
+                            {{ $casos->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
             </div>

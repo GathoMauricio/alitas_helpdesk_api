@@ -6,16 +6,16 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <b>Editar usuario {{ $usuario->email }}</b>
+                        <b style="color:rgb(234,81,70);">Editar usuario {{ $usuario->email }}</b>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: rgb(43,51,60);">
                         <form action="{{ url('update_usuarios', $usuario->id) }}" method="POST" class="form">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="user_rol_id" style="font-weight:bold;">Rol</label>
+                                        <label for="user_rol_id" style="font-weight:bold;color:rgb(251,199,0)">Rol</label>
                                         <select name="user_rol_id" id="user_rol_id" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                             @foreach ($roles as $rol)
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="status" style="font-weight:bold;">Estatus</label>
+                                        <label for="status" style="font-weight:bold;color:rgb(251,199,0)">Estatus</label>
                                         <select name="status" id="status" class="form-select">
                                             <option value>--Seleccione una opción--</option>
                                             @if ($usuario->status == 'Activo')
@@ -55,7 +55,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="name" style="font-weight:bold;">Nombre</label>
+                                            <label for="name"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Nombre</label>
                                             <input type="text" name="name" value="{{ old('name', $usuario->name) }}"
                                                 class="form-control">
                                             @error('name')
@@ -67,7 +68,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="middle_name" style="font-weight:bold;">A. patermo</label>
+                                            <label for="middle_name" style="font-weight:bold;color:rgb(251,199,0)">A.
+                                                patermo</label>
                                             <input type="text" name="middle_name"
                                                 value="{{ old('middle_name', $usuario->middle_name) }}"
                                                 class="form-control">
@@ -78,7 +80,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="last_name" style="font-weight:bold;">A. materno</label>
+                                            <label for="last_name" style="font-weight:bold;color:rgb(251,199,0)">A.
+                                                materno</label>
                                             <input type="text" name="last_name"
                                                 value="{{ old('last_name', $usuario->last_name) }}" class="form-control">
                                             @error('last_name')
@@ -90,7 +93,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="email" style="font-weight:bold;">Email</label>
+                                            <label for="email"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Email</label>
                                             <input type="email" value="{{ $usuario->email }}" class="form-control"
                                                 readonly>
                                             @error('email')
@@ -100,7 +104,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="phone" style="font-weight:bold;">Teléfono</label>
+                                            <label for="phone"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Teléfono</label>
                                             <input type="text" name="phone"
                                                 value="{{ old('phone', $usuario->phone) }}" class="form-control">
                                             @error('phone')
@@ -112,7 +117,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="address" style="font-weight:bold;">Dirección</label>
+                                            <label for="address"
+                                                style="font-weight:bold;color:rgb(251,199,0)">Dirección</label>
                                             <textarea name="address" class="form-control">{{ old('address', $usuario->address) }}</textarea>
                                             @error('address')
                                                 <span style="color:red">{{ $message }}</span>
@@ -122,7 +128,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 p-3">
-                                        <button type="submit" class="btn btn-primary" style="width: 100%;">Guardar</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            style="float:right; background-color: rgb(234,81,70);">Guardar</button>
                                     </div>
                                 </div>
                             </div>
