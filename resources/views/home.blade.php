@@ -147,7 +147,7 @@
                     `;
                 });
                 if (counter <= 0) {
-                    var html = `<center>Aún no hay adjuntos</center>`;
+                    var html = `<center  style="color:white;">Aún no hay adjuntos</center>`;
                 }
                 $("#modal_body_adjuntos").html(html);
             }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -183,7 +183,7 @@
                     `;
                 });
                 if (counter <= 0) {
-                    var html = `<center>Aún no hay seguimientos</center>`;
+                    var html = `<center style="color:white;">Aún no hay seguimientos</center>`;
                 }
                 $("#modal_body_seguimientos").html(html);
             }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -193,7 +193,7 @@
         }
 
         function eliminarCaso(case_id) {
-            if (confirm("¿Realmente desea eliminar este registro?")) {
+            alertify.confirm('Aviso', '¿Realmente desea eliminar este registro?', function() {
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -207,14 +207,16 @@
                         case_id: case_id
                     }
                 }).done(function(response) {
-                    alert(response.message);
+                    alertify.success(response.message);
                     if (response.status == 1)
                         window.location.reload();
 
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.log("The following error occured: " + textStatus + " " + errorThrown);
                 });
-            }
+            }, function() {
+
+            });
         }
     </script>
 @endsection

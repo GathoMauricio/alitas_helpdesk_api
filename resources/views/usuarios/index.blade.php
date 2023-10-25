@@ -54,7 +54,7 @@
     </div>
     <script>
         function eliminarUsuario(usuario_id) {
-            if (confirm("¿Realmente desea eliminar este registro?")) {
+            alertify.confirm('Aviso', '¿Realmente desea eliminar este registro?', function() {
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -68,14 +68,14 @@
                         usuario_id: usuario_id
                     }
                 }).done(function(response) {
-                    alert(response.message);
+                    alertify.success(response.message);
                     if (response.status == 1)
                         window.location.reload();
 
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.log("The following error occured: " + textStatus + " " + errorThrown);
                 });
-            }
+            }, function() {});
         }
     </script>
 @endsection
