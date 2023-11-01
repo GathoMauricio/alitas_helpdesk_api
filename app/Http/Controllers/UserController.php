@@ -190,6 +190,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'password' => bcrypt($request->password),
+            'centro_costo' => $request->centro_costo,
         ]);
 
         if ($usuario) {

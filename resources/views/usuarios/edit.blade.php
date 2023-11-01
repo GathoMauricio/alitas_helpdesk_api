@@ -15,6 +15,19 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="centro_costo" style="font-weight:bold;color:rgb(251,199,0)">Centro de
+                                            costo</label>
+                                        <input type="text" name="centro_costo"
+                                            value="{{ old('centro_costo', $usuario->centro_costo) }}" class="form-control">
+                                        @error('centro_costo')
+                                            <span style="color:red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label for="user_rol_id" style="font-weight:bold;color:rgb(251,199,0)">Rol</label>
                                         <select name="user_rol_id" id="user_rol_id" class="form-select">
                                             <option value>--Seleccione una opción--</option>

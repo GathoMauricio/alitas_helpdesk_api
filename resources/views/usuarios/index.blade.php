@@ -15,6 +15,7 @@
                         <table class="table table-stripped">
                             <thead>
                                 <tr>
+                                    <th>Centro de costo</th>
                                     <th>Rol</th>
                                     <th>Estatus</th>
                                     <th>Nombre</th>
@@ -27,6 +28,7 @@
                             <tbody>
                                 @foreach ($usuarios as $key => $usuario)
                                     <tr>
+                                        <td>{{ $usuario->centro_costo }}</td>
                                         <td>{{ $usuario->rol->name }}</td>
                                         <td>{{ $usuario->status }}</td>
                                         <td>{{ $usuario->name }} {{ $usuario->middle_name }} {{ $usuario->last_name }}</td>
