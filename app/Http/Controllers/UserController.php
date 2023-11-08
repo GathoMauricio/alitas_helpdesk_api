@@ -168,6 +168,7 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
+            'zona' => 'required',
         ], [
             'user_rol_id.required' => 'Campo obligatorio',
             'status.required' => 'Campo obligatorio',
@@ -177,6 +178,7 @@ class UserController extends Controller
             'password.confirmed' => 'La confirmación no coincide',
             'password.min' => 'El password debe ser de 6 caracteres como mínimo',
             'password_confirmation.required' => 'Campo obligatorio',
+            'zona.required' => 'Campo obligatorio',
         ]);
 
         $usuario = User::create([
@@ -191,6 +193,7 @@ class UserController extends Controller
             'address' => $request->address,
             'password' => bcrypt($request->password),
             'centro_costo' => $request->centro_costo,
+            'zona' => $request->zona,
         ]);
 
         if ($usuario) {
@@ -211,10 +214,12 @@ class UserController extends Controller
             'user_rol_id' => 'required',
             'status' => 'required',
             'name' => 'required',
+            'zona' => 'required',
         ], [
             'user_rol_id.required' => 'Campo obligatorio',
             'status.required' => 'Campo obligatorio',
             'name.required' => 'Campo obligatorio',
+            'name.zona' => 'Campo obligatorio',
         ]);
         $usuario = User::findOrFail($id);
         if ($usuario->update($request->all())) {

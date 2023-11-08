@@ -29,7 +29,8 @@ class User extends Authenticatable
         'phone',
         'address',
         'password',
-        'centro_costo'
+        'centro_costo',
+        'zona',
     ];
 
     /**

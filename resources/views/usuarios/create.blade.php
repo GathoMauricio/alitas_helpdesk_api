@@ -12,13 +12,26 @@
                         <form action="{{ url('store_usuarios') }}" method="POST" class="form">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="centro_costo" style="font-weight:bold;color:rgb(251,199,0)">Centro de
                                             costo</label>
                                         <input type="text" value="{{ old('centro_costo') }}" name="centro_costo"
                                             class="form-control">
                                         @error('centro_costo')
+                                            <span style="color:red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="zona" style="font-weight:bold;color:rgb(251,199,0)">Zona</label>
+                                        <select name="zona" id="zona" class="form-select">
+                                            <option value="N|A">N|A</option>
+                                            <option value="NORTE">NORTE</option>
+                                            <option value="CENTRO">CENTRO</option>
+                                        </select>
+                                        @error('zona')
                                             <span style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div>
