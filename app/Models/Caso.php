@@ -34,6 +34,16 @@ class Caso extends Model
             ->withDefault();
     }
 
+    public function area_servicio()
+    {
+        return $this->belongsTo(
+            'App\Models\Area',
+            'area_id',
+            'id'
+        )
+            ->withDefault();
+    }
+
     public function tipo_servicio()
     {
         return $this->belongsTo(

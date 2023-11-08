@@ -89,6 +89,9 @@
                                         <a class="dropdown-item" href="{{ url('index_usuarios') }}">
                                             Usuarios
                                         </a>
+                                        <a class="dropdown-item" href="{{ url('index_reportes') }}">
+                                            Reportes
+                                        </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
