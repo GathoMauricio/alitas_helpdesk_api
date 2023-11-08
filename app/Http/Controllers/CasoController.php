@@ -89,7 +89,7 @@ class CasoController extends Controller
                 'seguimientos' => $seguimientos_datos,
                 'archivos' => $archivos_datos,
                 'centro_costo' => $caso->contacto->centro_costo,
-                'zona' => $caso->zona
+                'zona' => $caso->contacto->zona
             ];
         }
         return response()->json([
