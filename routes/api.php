@@ -23,4 +23,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('api-actualizar-fcm', [\App\Http\Controllers\NotificacionController::class, 'apiActualizarFcm']);
     Route::post('api-actualizar-estatus-ticket', [\App\Http\Controllers\CasoController::class, 'apiActualizarEstatusTicket']);
     Route::post('api-actualizar-password', [\App\Http\Controllers\UserController::class, 'apiActualizarPassword']);
+    Route::post('api-load-historial', [\App\Http\Controllers\CasoController::class, 'apiLoadHistorial']);
 });

@@ -375,6 +375,7 @@ class CasoController extends Controller
             ]);
         }
     }
+
     public function cargarAdjuntos(Request $request)
     {
         $adjuntos = ArchivoCaso::where('case_id', $request->caso_id)->get();
@@ -416,5 +417,89 @@ class CasoController extends Controller
         } else {
             return $archivo;
         }
+    }
+
+    public function apiLoadHistorial(Request $request)
+    {
+        $casos = Caso::where('status_id', 3);
+        $areas = explode(',', $request->selected_areas);
+        $areas = array_diff($areas, array("", 0, null));
+        //return $areas;
+        if (count($areas) > 0) {
+            $casos = $casos->where(function ($q) use ($areas) {
+                foreach ($areas as $area) {
+                    $q->orWhere('area_id', $area);
+                }
+            });
+        }
+        if (auth()->user()->user_rol_id == 3) {
+            $casos = $casos->where('user_contact_id', auth()->user()->id)->orderBy('id', 'DESC');
+        } else {
+            $casos = $casos->orderBy('id', 'DESC');
+        }
+        // $casos = $casos->toSql();
+        // return $casos;
+        $casos = $casos->paginate(10);
+
+        $datos = [];
+        foreach ($casos as $caso) {
+            $tipoServicio = TipoServicio::find($caso->service_id);
+            if ($tipoServicio) {
+                $caso->area_id = $tipoServicio->area->id;
+            } else {
+                $caso->area_id = 1;
+            }
+
+            if ($caso->status_id == null) {
+                $caso->status_id = 1;
+            }
+            $caso->save();
+            $seguimientos_datos = [];
+            $seguimientos = SeguimientoCaso::where('case_id', $caso->id)->orderBy('id', 'DESC')->get();
+            foreach ($seguimientos as $seguimiento) {
+                $seguimientos_datos[] = [
+                    'id' => $seguimiento->id,
+                    'ticket_id' => $seguimiento->case_id,
+                    'autor' => $seguimiento->autor->name . ' ' . $seguimiento->autor->middle_name . ' ' . $seguimiento->autor->last_name,
+                    'texto' => $seguimiento->body,
+                    'created_at' => $seguimiento->created_at,
+                ];
+            }
+            $archivos = ArchivoCaso::where('case_id', $caso->id)->orderBy('id', 'DESC')->get();
+            $archivos_datos = [];
+            foreach ($archivos as $archivo) {
+                $archivos_datos[] = [
+                    'id' => $archivo->id,
+                    'case_id' => $archivo->case_id,
+                    'author' => $archivo->autor->name . ' ' . $archivo->autor->middle_name . ' ' . $archivo->autor->last_name,
+                    'name' => $archivo->name,
+                    'route' => $archivo->route,
+                    'mime_type' => $archivo->mime_type,
+                    'created_at' => $archivo->created_at,
+                ];
+            }
+            $datos[] = [
+                'id' => $caso->id,
+                'estatus' => $caso->estatus->name,
+                'area' => $caso->tipo_servicio->area->name,
+                'tipo_servicio' => $caso->tipo_servicio->name,
+                'categoria' => $caso->tipo_servicio->name,
+                'sintoma' => 'N/A',
+                'usuarioFinal' => $caso->contacto->name . ' ' . $caso->contacto->middle_name . ' ' . $caso->contacto->last_name,
+                'folio' => $caso->num_case,
+                'prioridad' => $caso->prioridad->name,
+                'descripcion' => $caso->description,
+                'created_at' => $caso->created_at,
+                'seguimientos' => $seguimientos_datos,
+                'archivos' => $archivos_datos,
+                'centro_costo' => $caso->contacto->centro_costo,
+                'zona' => $caso->contacto->zona
+            ];
+        }
+        return response()->json([
+            "estatus" => 1,
+            "mensaje" => "Datos obtenidos",
+            "data" => $datos
+        ]);
     }
 }
