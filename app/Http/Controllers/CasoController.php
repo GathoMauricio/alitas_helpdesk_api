@@ -505,4 +505,60 @@ class CasoController extends Controller
             "data" => $datos
         ]);
     }
+
+    public function apiBuscarTicket(Request $request)
+    {
+        $num_case = strtoupper($request->ticket);
+        $caso = Caso::where('num_case', $num_case)->first();
+        if ($caso) {
+            $seguimientos = SeguimientoCaso::where('case_id', $caso->id)->orderBy('id', 'DESC')->get();
+            $seguimientos_datos = [];
+            foreach ($seguimientos as $seguimiento) {
+                $seguimientos_datos[] = [
+                    'id' => $seguimiento->id,
+                    'ticket_id' => $seguimiento->case_id,
+                    'autor' => $seguimiento->autor->name . ' ' . $seguimiento->autor->middle_name . ' ' . $seguimiento->autor->last_name,
+                    'texto' => $seguimiento->body,
+                    'created_at' => $seguimiento->created_at,
+                ];
+            }
+            $archivos = ArchivoCaso::where('case_id', $caso->id)->orderBy('id', 'DESC')->get();
+            $archivos_datos = [];
+            foreach ($archivos as $archivo) {
+                $archivos_datos[] = [
+                    'id' => $archivo->id,
+                    'case_id' => $archivo->case_id,
+                    'author' => $archivo->autor->name . ' ' . $archivo->autor->middle_name . ' ' . $archivo->autor->last_name,
+                    'name' => $archivo->name,
+                    'route' => $archivo->route,
+                    'mime_type' => $archivo->mime_type,
+                    'created_at' => $archivo->created_at,
+                ];
+            }
+            return response()->json([
+                'status' => 1,
+                'message' => 'Registro encontrado',
+                'data' => [
+                    'id' => $caso->id,
+                    'estatus' => $caso->estatus->name,
+                    'area' => $caso->tipo_servicio->area->name,
+                    'tipo_servicio' => $caso->tipo_servicio->name,
+                    'categoria' => $caso->tipo_servicio->name,
+                    'sintoma' => 'N/A',
+                    'usuarioFinal' => $caso->contacto->name . ' ' . $caso->contacto->middle_name . ' ' . $caso->contacto->last_name,
+                    'folio' => $caso->num_case,
+                    'prioridad' => $caso->prioridad->name,
+                    'descripcion' => $caso->description,
+                    'created_at' => $caso->created_at,
+                    'seguimientos' => $seguimientos_datos,
+                    'archivos' => $archivos_datos,
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'No se encontró el registro',
+            ]);
+        }
+    }
 }
