@@ -206,6 +206,9 @@ class CasoController extends Controller
     public function apiActualizarEstatusTicket(Request $request)
     {
         $caso = Caso::find($request->case_id);
+        if ($request->estatus == 'Cerrada') {
+            $caso->finished_at = date('Y-m-d H:i:s');
+        }
         $caso->status_id = $this->estatusToId($request->estatus);
         if ($caso->save()) {
             $data = [

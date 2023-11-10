@@ -22,6 +22,7 @@ class Caso extends Model
         'user_contact_id',
         'priority_case_id',
         'description',
+        'finished_at',
     ];
 
     public function contacto()

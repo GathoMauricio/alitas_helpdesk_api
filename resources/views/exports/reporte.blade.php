@@ -11,7 +11,8 @@
             <th>Zona</th>
             <th>N° Seguimientos</th>
             <th>N° Adjuntos</th>
-            <th>Fecha</th>
+            <th>Fecha inicio</th>
+            <th>Fecha cierre</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +29,13 @@
                 <td>{{ $caso->seguimientos->count() }}</td>
                 <td>{{ $caso->archivos->count() }}</td>
                 <td>{{ $caso->created_at }}</td>
+                <td>
+                    @if ($caso->finished_at)
+                        {{ $caso->finished_at }}
+                    @else
+                        N|A
+                    @endif
+                </td>
             </tr>
         @endforeach
     </tbody>
