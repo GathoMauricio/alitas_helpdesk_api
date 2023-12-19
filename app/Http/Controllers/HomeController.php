@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Caso;
 use App\Models\User;
+use App\Models\EstatusCaso;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,7 @@ class HomeController extends Controller
             $casos = $casos->orderBy('id', 'DESC');
         }
         $casos = $casos->paginate(10);
-        return view('home', compact('casos', 'tecnicos'));
+        $estatuses = EstatusCaso::all();
+        return view('home', compact('casos', 'tecnicos', 'estatuses'));
     }
 }

@@ -33,6 +33,7 @@ Route::get('index_reportes', [App\Http\Controllers\ReportesController::class, 'i
 Route::post('generar_reporte', [App\Http\Controllers\ReportesController::class, 'generarReporte']);
 
 Route::put('asignar_caso', [App\Http\Controllers\CasoController::class, 'asignarCaso']);
+Route::put('cambiar_estatus_caso', [App\Http\Controllers\CasoController::class, 'cambiarEstatus']);
 
 Route::any('/', function () {
 })->name('/');

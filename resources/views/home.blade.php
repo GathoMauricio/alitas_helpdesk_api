@@ -62,6 +62,10 @@
                                                 <br>
                                                 <a href="javascript:void(0);" onclick="asignarCaso({{ $caso->id }})"
                                                     class="text-warning">Asignar</a>
+                                                <br>
+                                                <a href="javascript:void(0);"
+                                                    onclick="cambiarEstatus({{ $caso->id }},{{ $caso->status_id }})"
+                                                    class="text-primary">Cambiar estatus</a>
                                             @endif
                                             @if (Auth::user()->user_rol_id == 4)
                                                 <br>
@@ -86,6 +90,7 @@
     @include('casos.seguimientos')
     @include('casos.adjuntos')
     @include('casos.asignar_caso')
+    @include('casos.cambiar_estatus')
     <script>
         var caso_actual = 0;
         $(document).ready(function() {
@@ -241,6 +246,12 @@
         function asignarCaso(caso_id) {
             $("#txt_caso_id").val(caso_id);
             $('#modal_asignar_caso').modal('show');
+        }
+
+        function cambiarEstatus(case_id, status_id) {
+            $("#txt_caso_id_cambiar_estatus").val(case_id);
+            $("#cbo_status_id").val(status_id);
+            $("#modal_cambiar_estatus").modal('show');
         }
     </script>
 @endsection
