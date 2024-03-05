@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <br><br><br>
-        <div class="row justify-content-center">
+        {{--  <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header" style="font-weight: bold;color:rgb(234,81,70);">
@@ -49,18 +49,6 @@
                                 </div>
                             </div>
 
-                            {{--  <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>  --}}
-
                             <div class="row">
                                 <div class="col-md-12 offset-md-12">
 
@@ -78,6 +66,25 @@
                     </div>
                 </div>
             </div>
+        </div>  --}}
+
+    </div>
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1>Por el momento la continuidad de este sistema se encuentra bajo evaluación...</h1>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('#exampleModalLong').modal('show');
+    });
+</script>
