@@ -78,10 +78,10 @@ class UserController extends Controller
 
             $data = [
                 'user' => $user,
-                'enlace' => 'http://dotech.dyndns.biz:16666/help_ppj_api/public/generar_password/' . $api_token
+                'enlace' => 'http://dotech.dyndns.biz:16666/alitas_helpdesk_api/public/generar_password/' . $api_token
             ];
             $respuesta = \Mail::send('emails.solicitud_password', ['data' => $data], function ($mail) use ($user) {
-                $mail->from('my_heldesk_pj@papajohnsmexico.com', env('APP_NAME'));
+                $mail->from('alitas_helpdesk@plasalitas.com', env('APP_NAME'));
                 $mail->to([$user->email]);
                 //$mail->attachData($pdf->output(), 'Cotizacion_' . $sale->id . '.pdf');
             });
@@ -111,7 +111,7 @@ class UserController extends Controller
                 'temporal_pass' => $passwordTemporal
             ];
             \Mail::send('emails.generar_password', ['data' => $data], function ($mail) use ($user) {
-                $mail->from('my_heldesk_pj@papajohnsmexico.com', env('APP_NAME'));
+                $mail->from('alitas_helpdesk@plasalitas.com', env('APP_NAME'));
                 $mail->to([$user->email]);
                 //$mail->attachData($pdf->output(), 'Cotizacion_' . $sale->id . '.pdf');
             });
