@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <br><br><br>
-        {{--  <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header" style="font-weight: bold;color:rgb(234,81,70);">
@@ -66,11 +66,11 @@
                     </div>
                 </div>
             </div>
-        </div>  --}}
+        </div>
 
     </div>
 
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    {{--  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -79,12 +79,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  --}}
 @endsection
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
     crossorigin="anonymous"></script>
-<script>
+{{--  <script>
     $(document).ready(function() {
         $('#exampleModalLong').modal('show');
     });
-</script>
+</script>  --}}
