@@ -175,6 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceProvider::class,
 
     ],
 
@@ -233,4 +234,8 @@ return [
 
     ],
 
+    'bd_name' => env('DB_DATABASE'),
+    'bd_user' => env('DB_USERNAME'),
+    'bd_password' => env('DB_PASSWORD'),
+    'app_route' => env('APP_ROUTE'),
 ];
